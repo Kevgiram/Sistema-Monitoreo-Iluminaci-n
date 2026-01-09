@@ -1,14 +1,13 @@
-#include <WiFi.h>            // Librería para ESP32 (No usar ESP8266WiFi)
+#include <WiFi.h>            // Librería para ESP32 
 #include <HTTPClient.h>      // Cliente HTTP para ESP32
-#include <ArduinoJson.h>     // Asegúrate de tener instalada la versión 6 o 7
+#include <ArduinoJson.h>     
 
 // --- 1. CONFIGURACIÓN DE RED ---
-const char* ssid     = "Red_Prueba";     // TU NOMBRE DE WIFI
-const char* password = "laboratorio";    // TU CONTRASEÑA
+const char* ssid     = "Red_Prueba";     
+const char* password = "laboratorio";    
 
 // --- 2. CONFIGURACIÓN DEL SERVIDOR ---
-// IMPORTANTE: Cambia la IP por la de tu PC (usa 'ipconfig' en cmd para verla)
-// No uses localhost aquí, el ESP32 no sabe qué es localhost.
+
 const char* serverUrl = "http://10.221.72.194:8080/lecturas";
 
 // --- 3. PINES DEL HARDWARE ---
@@ -17,7 +16,7 @@ const int PIN_LDR = 34;   // Sensor Luz (Analógico - Solo entrada)
 const int PIN_RELE = 26;  // Actuador Foco (Salida)
 
 // Umbral de luz: Ajusta este valor según tu LDR (0 a 4095)
-// < 2000 suele ser oscuro, > 2000 luz, pero depende de tu resistencia.
+
 const int UMBRAL_OSCURIDAD = 2000; 
 
 void setup() {
@@ -26,7 +25,7 @@ void setup() {
   // Configurar Pines
   pinMode(PIN_PIR, INPUT);
   pinMode(PIN_RELE, OUTPUT);
-  // El PIN_LDR no necesita pinMode en ESP32, es analógico puro.
+
 
   // Iniciar WiFi
   WiFi.begin(ssid, password);
@@ -104,3 +103,4 @@ void loop() {
   // Esperar 5 segundos antes de la siguiente lectura
   delay(5000);
 }
+
